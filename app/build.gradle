@@ -1,0 +1,89 @@
+import buildSrc.Build
+import buildSrc.Libs
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk Build.compileSdk
+
+    defaultConfig {
+        applicationId "com.godslew.apps.compose.catalog"
+        minSdk Build.minSdk
+        targetSdk Build.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerVersion Libs.kotlinVersion
+        kotlinCompilerExtensionVersion Libs.AndroidX.Compose.version
+    }
+}
+
+dependencies {
+
+    // Kotlin
+    implementation Libs.Kotlin.stdlib
+
+    // View
+    implementation Libs.View.appcompat
+    implementation Libs.View.material
+    implementation Libs.View.recyclerview
+
+    // Coroutines
+    implementation Libs.Kotlin.Coroutines.core
+    implementation Libs.Kotlin.Coroutines.android
+
+    // AndroidX
+    implementation Libs.AndroidX.coreKtx
+
+    // Lifecycle
+    implementation Libs.AndroidX.Lifecycle.extensions
+    implementation Libs.AndroidX.Lifecycle.viewModel
+    implementation Libs.AndroidX.Lifecycle.runtime
+    implementation Libs.AndroidX.Lifecycle.livedata
+
+    // Jetpack Compose
+    implementation Libs.AndroidX.Activity.activityCompose
+
+    implementation Libs.AndroidX.Compose.runtime
+    implementation Libs.AndroidX.Compose.liveData
+    implementation Libs.AndroidX.Compose.foundation
+    implementation Libs.AndroidX.Compose.layout
+    implementation Libs.AndroidX.Compose.ui
+    implementation Libs.AndroidX.Compose.uiUtil
+    implementation Libs.AndroidX.Compose.material
+    implementation Libs.AndroidX.Compose.animation
+    implementation Libs.AndroidX.Compose.iconsExtended
+    implementation Libs.AndroidX.Compose.tooling
+    implementation Libs.AndroidX.Compose.navigation
+    implementation Libs.AndroidX.Compose.hiltNavigationCompose
+
+    // DI
+    implementation Libs.Dagger.hiltAndroid
+    kapt Libs.Dagger.hiltCompiler
+}
