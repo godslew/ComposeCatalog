@@ -12,7 +12,7 @@ enum class ButtonsCatalog(override val body: @Composable (onClick: () -> Unit) -
 }
 
 enum class PrimaryCatalog(override val body: @Composable (() -> Unit) -> Unit): Content {
-  Default(body = { PrimaryButton(text = "Primary", onClick = {})  })
+  Default(body = { PrimaryButton(text = "Default", onClick = {})  })
 }
 
 @Composable

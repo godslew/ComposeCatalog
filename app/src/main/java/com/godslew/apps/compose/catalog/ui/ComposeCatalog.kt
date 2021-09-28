@@ -26,7 +26,9 @@ fun ComposeCatalogApp() {
           actions = {
             IconButton(onClick = {
               navController.navigate(ComposeCatalogScreen.Parent.name) {
-                launchSingleTop = true
+                popUpTo(ComposeCatalogScreen.Parent.name) {
+                  inclusive = true
+                }
               }
             }) {
               Icon(Icons.Filled.Home, contentDescription = null)
