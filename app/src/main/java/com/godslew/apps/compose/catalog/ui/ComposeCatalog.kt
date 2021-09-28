@@ -1,6 +1,5 @@
 package com.godslew.apps.compose.catalog.ui
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -26,7 +25,9 @@ fun ComposeCatalogApp() {
           },
           actions = {
             IconButton(onClick = {
-              navController.navigate(ComposeCatalogScreen.Parent.name)
+              navController.navigate(ComposeCatalogScreen.Parent.name) {
+                launchSingleTop = true
+              }
             }) {
               Icon(Icons.Filled.Home, contentDescription = null)
             }
@@ -34,7 +35,7 @@ fun ComposeCatalogApp() {
         )
       }
     ) { innerPadding ->
-      ComposeCatalogNavigation(navController = navController)
+      ComposeCatalogNavigation(navController = navController, Modifier.padding(innerPadding))
     }
   }
 }
