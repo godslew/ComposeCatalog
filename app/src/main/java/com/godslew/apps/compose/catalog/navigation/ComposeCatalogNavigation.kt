@@ -7,9 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.godslew.apps.compose.catalog.screens.ComposeCatalogScreen
 import com.godslew.apps.compose.catalog.ui.buttons.Buttons
-import com.godslew.apps.compose.catalog.ui.components.ButtonsCatalog
-import com.godslew.apps.compose.catalog.ui.components.Contents
-import com.godslew.apps.compose.catalog.ui.components.PrimaryCatalog
+import com.godslew.apps.compose.catalog.ui.components.*
 import com.godslew.apps.compose.catalog.ui.parent.Parent
 
 @Composable
@@ -26,6 +24,12 @@ fun ComposeCatalogNavigation(
     }
     composable(route = ComposeCatalogScreen.Buttons.name + "/" + ButtonsCatalog.Primary.name) {
       Contents(contents = PrimaryCatalog.values().toList())
+    }
+    composable(route = ComposeCatalogScreen.Buttons.name + "/" + ButtonsCatalog.Secondary.name) {
+      Contents(contents = SecondaryCatalog.values().toList())
+    }
+    composable(route = ComposeCatalogScreen.Buttons.name + "/" + ButtonsCatalog.Outline.name) {
+      Contents(contents = OutlineCatalog.values().toList())
     }
   }
 }
